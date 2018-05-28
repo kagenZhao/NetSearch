@@ -9,6 +9,15 @@ class JingDongSearch(BaseSearch):
         self.reqeust_url = "https://dd-search.jd.com/?terminal=pc&newjson=1&ver=2&zip=1&curr_url=www.jd.com%2F&key=" + str(
             self.query)
 
+    def runDefault(self):
+        result_arr = []
+        args = Args("https://search.jd.com/Search?keyword=%s" % quote(self.query), self.query)
+        result_arr.append(Item(args.copy_text,
+                               args.open_url,
+                               "Enter to search this by JingDong",
+                               args))
+        return result_arr
+
     def run(self):
         headers = {
             "Referer": "https://www.jd.com/"

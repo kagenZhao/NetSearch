@@ -31,13 +31,21 @@ class BaseSearch:
         self.items = []
         self.query = query
 
+    def runDefault(self):
+        return []
+
     def run(self):
         return []
 
     def setup(self, items):
+        self.items.clear()
         for item in items:
             self.items.append(item.dic())
 
     def send_back(self):
-        self.setup(self.run())
-        sys.stdout.write(json.dumps({"items": self.items}, ensure_ascii=False))
+        default_arr = self.runDefault()
+        default_arr.extend(self.run())
+        self.setup(default_arr)
+        sys.stdout.write('\r' + json.dumps({"items": self.items}, ensure_ascii=False))
+        sys.stdout.flush()
+
