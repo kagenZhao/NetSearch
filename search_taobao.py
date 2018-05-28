@@ -1,12 +1,11 @@
 import requests
-import json
-from tools import BaseSearch
-from tools import Item
+from tools import *
+from urllib.parse import quote
 
 
 class TaobaoSearch(BaseSearch):
-    def __init__(self, query, destination):
-        super(TaobaoSearch, self).__init__(query, destination)
+    def __init__(self, query):
+        super(TaobaoSearch, self).__init__(query)
         self.reqeust_url = "https://suggest.taobao.com/sug?code=utf-8&q=" + str(self.query)
 
     def run(self):
@@ -14,6 +13,9 @@ class TaobaoSearch(BaseSearch):
         json_dic = json.loads(r.text)
         result_arr = []
         for item in json_dic["result"]:
-            result_arr.append(
-                Item("https://s.taobao.com/search?q=%s", item[0], self.destination))
+            args = Args("https://s.taobao.com/search?q=%s" % quote(item[0]), item[0])
+            result_arr.append(Item(args.copy_text,
+                                   args.open_url,
+                                   "Enter to search this by TaoBao",
+                                   args))
         return result_arr

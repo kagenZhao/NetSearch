@@ -1,13 +1,13 @@
 import requests
-import json
-from tools import BaseSearch
-from tools import Item
+from tools import *
+from urllib.parse import quote
 
 
 class JingDongSearch(BaseSearch):
-    def __init__(self, query, destination):
-        super(JingDongSearch, self).__init__(query, destination)
-        self.reqeust_url = "https://dd-search.jd.com/?terminal=pc&newjson=1&ver=2&zip=1&curr_url=www.jd.com%2F&key=" + str(self.query)
+    def __init__(self, query):
+        super(JingDongSearch, self).__init__(query)
+        self.reqeust_url = "https://dd-search.jd.com/?terminal=pc&newjson=1&ver=2&zip=1&curr_url=www.jd.com%2F&key=" + str(
+            self.query)
 
     def run(self):
         headers = {
@@ -18,6 +18,9 @@ class JingDongSearch(BaseSearch):
         result_arr = []
         for item in json_arr:
             if "key" in item:
-                result_arr.append(
-                    Item("https://search.jd.com/Search?keyword=%s", item["key"], self.destination))
+                args = Args("https://search.jd.com/Search?keyword=%s" % quote(item["key"]), item["key"])
+                result_arr.append(Item(args.copy_text,
+                                       args.open_url,
+                                       "Enter to search this by JingDong",
+                                       args))
         return result_arr

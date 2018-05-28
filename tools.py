@@ -1,30 +1,35 @@
 import json
 import sys
-from urllib.parse import quote
+
+
+class Args:
+    def __init__(self, open_url, copy_text):
+        self.open_url = open_url
+        self.copy_text = copy_text
 
 
 class Item:
-    def __init__(self, url, title, destination):
-        self.url = url % quote(title)
+    def __init__(self, title, url, subtitle, arg):
+        self.url = url
         self.title = title
-        self.destination = destination
+        self.subtitle = subtitle
+        self.arg = arg
 
     def dic(self):
         return {"quicklookurl": self.url,
-                "arg": self.url + " " + self.title,
+                "arg": self.arg.open_url + "<|>" + self.arg.copy_text,
                 "autocomplete": "",
                 "uid": self.url,
                 "title": self.title,
-                "subtitle": "Enter to search this by " + self.destination,
+                "subtitle": self.subtitle,
                 "type": "default",
                 "valid": True}
 
 
 class BaseSearch:
-    def __init__(self, query, destination):
+    def __init__(self, query):
         self.items = []
         self.query = query
-        self.destination = destination
 
     def run(self):
         return []
