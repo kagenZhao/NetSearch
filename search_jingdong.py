@@ -15,6 +15,7 @@ class JingDongSearch(BaseSearch):
         result_arr.append(Item(args.copy_text,
                                args.open_url,
                                "Enter to search this by JingDong",
+                               "jingdong_icon",
                                args))
         return result_arr
 
@@ -31,5 +32,6 @@ class JingDongSearch(BaseSearch):
                 result_arr.append(Item(args.copy_text,
                                        args.open_url,
                                        "Enter to search this by JingDong",
+                                       "jingdong_icon",
                                        args))
         return result_arr

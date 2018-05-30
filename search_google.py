@@ -15,6 +15,7 @@ class GoogleSearch(BaseSearch):
         result_arr.append(Item(args.copy_text,
                                args.open_url,
                                "Enter to search this by Google",
+                               "google_icon",
                                args))
         return result_arr
 
@@ -33,5 +34,6 @@ class GoogleSearch(BaseSearch):
             result_arr.append(Item(args.copy_text,
                                    args.open_url,
                                    "Enter to search this by Google",
+                                   "google_icon",
                                    args))
         return result_arr

@@ -15,6 +15,7 @@ class BaiduSearch(BaseSearch):
         result_arr.append(Item(args.copy_text,
                                args.open_url,
                                "Enter to search this by Baidu",
+                               "baidu_icon",
                                args))
         return result_arr
 
@@ -29,6 +30,7 @@ class BaiduSearch(BaseSearch):
             result_arr.append(Item(args.copy_text,
                                    args.open_url,
                                    "Enter to search this by Baidu",
+                                   "baidu_icon",
                                    args))
 
         return result_arr

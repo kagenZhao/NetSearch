@@ -22,5 +22,6 @@ class CocoapodsSearch(BaseSearch):
             result_arr.append(Item("%s(%s)" % (name, version),
                                    args.open_url,
                                    summary,
+                                   "cocoapods_icon",
                                    args))
         return result_arr

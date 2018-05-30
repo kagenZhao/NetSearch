@@ -14,6 +14,7 @@ class TaobaoSearch(BaseSearch):
         result_arr.append(Item(args.copy_text,
                                args.open_url,
                                "Enter to search this by TaoBao",
+                               "taobao_icon",
                                args))
         return result_arr
 
@@ -26,5 +27,6 @@ class TaobaoSearch(BaseSearch):
             result_arr.append(Item(args.copy_text,
                                    args.open_url,
                                    "Enter to search this by TaoBao",
+                                   "taobao_icon",
                                    args))
         return result_arr
