@@ -14,7 +14,7 @@ class JingDongSearch(BaseSearch):
         args = Args("https://search.jd.com/Search?keyword=%s" % quote(self.query), self.query)
         result_arr.append(Item(args.copy_text,
                                args.open_url,
-                               "Enter to search this by JingDong",
+                               '京东搜索 "%s"' % self.query,
                                "jingdong_icon",
                                args))
         return result_arr
@@ -24,14 +24,13 @@ class JingDongSearch(BaseSearch):
             "Referer": "https://www.jd.com/"
         }
         r = requests.get(self.reqeust_url, headers=headers)
-        json_arr = json.loads(r.text)
         result_arr = []
-        for item in json_arr:
+        for item in r.json():
             if "key" in item:
-                args = Args("https://search.jd.com/Search?keyword=%s" % quote(item["key"]), item["key"])
+                args = Args("https://search.jd.com/Search?keyword=%s&enc=utf-8&wq=%s" % (quote(item["key"]), quote(item["key"])), item["key"])
                 result_arr.append(Item(args.copy_text,
                                        args.open_url,
-                                       "Enter to search this by JingDong",
+                                       '京东搜索 "%s"' % item["key"],
                                        "jingdong_icon",
                                        args))
         return result_arr

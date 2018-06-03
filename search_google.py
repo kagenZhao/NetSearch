@@ -14,7 +14,7 @@ class GoogleSearch(BaseSearch):
         args = Args("https://www.google.com/search?q=%s" % quote(self.query), self.query)
         result_arr.append(Item(args.copy_text,
                                args.open_url,
-                               "Enter to search this by Google",
+                               '谷歌搜索 "%s"' % self.query,
                                "google_icon",
                                args))
         return result_arr
@@ -27,13 +27,13 @@ class GoogleSearch(BaseSearch):
                 "https": self.proxy_address
             }
         r = requests.get(self.reqeust_url, proxies=proxy_dict)
-        json_arr = json.loads(r.text)[1]
+        json_arr = r.json()[1]
         result_arr = []
         for item in json_arr:
             args = Args("https://www.google.com/search?q=%s" % quote(item[0]), item[0])
             result_arr.append(Item(args.copy_text,
                                    args.open_url,
-                                   "Enter to search this by Google",
+                                   '谷歌搜索 "%s"' % item[0],
                                    "google_icon",
                                    args))
         return result_arr

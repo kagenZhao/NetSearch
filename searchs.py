@@ -6,6 +6,7 @@ from search_taobao import TaobaoSearch
 from search_google import GoogleSearch
 from search_jingdong import JingDongSearch
 from search_cococapods import CocoapodsSearch
+from search_douban import DouBanSearch
 from tools import BaseSearch
 
 
@@ -24,5 +25,7 @@ if __name__ == '__main__':
         JingDongSearch(query).send_back()
     elif query_type == "cocoapods":
         CocoapodsSearch(query).send_back()
+    elif query_type == "douban":
+        DouBanSearch(query).send_back()
     else:
         BaseSearch(query).send_back()

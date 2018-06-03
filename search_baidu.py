@@ -14,7 +14,7 @@ class BaiduSearch(BaseSearch):
         args = Args("https://www.baidu.com/s?ie=UTF-8&wd=%s" % quote(self.query), self.query)
         result_arr.append(Item(args.copy_text,
                                args.open_url,
-                               "Enter to search this by Baidu",
+                               '百度搜索 "%s"' % self.query,
                                "baidu_icon",
                                args))
         return result_arr
@@ -29,7 +29,7 @@ class BaiduSearch(BaseSearch):
             args = Args("https://www.baidu.com/s?ie=UTF-8&wd=%s" % quote(item), item)
             result_arr.append(Item(args.copy_text,
                                    args.open_url,
-                                   "Enter to search this by Baidu",
+                                   '百度搜索 "%s"' % item,
                                    "baidu_icon",
                                    args))
 
