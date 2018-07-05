@@ -10,7 +10,7 @@ brew install python
 # This workflow require to install requests
 pip install requests
 ```
-![baidu search](https://github.com/kagenZhao/NetSearch/blob/master/Images/baidu.png)
-![google search](https://github.com/kagenZhao/NetSearch/blob/master/Images/google.png)
-![taobao search](https://github.com/kagenZhao/NetSearch/blob/master/Images/taobao.png)
-![jingdong search](https://github.com/kagenZhao/NetSearch/blob/master/Images/jingdong.png)
+![baidu search](https://github.com/kagenZhao/NetSearch/blob/master/Images/scrennshot/baidu.png)
+![google search](https://github.com/kagenZhao/NetSearch/blob/master/Images/scrennshot/google.png)
+![taobao search](https://github.com/kagenZhao/NetSearch/blob/master/Images/scrennshot/taobao.png)
+![jingdong search](https://github.com/kagenZhao/NetSearch/blob/master/Images/scrennshot/jingdong.png)
