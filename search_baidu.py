@@ -21,7 +21,7 @@ class BaiduSearch(BaseSearch):
 
     def run(self):
         r = requests.get(self.reqeust_url)
-        pattern = re.compile("^window\.baidu\.sug\((.*?)\);$")
+        pattern = re.compile("^window\.baidu\.sug\((.*?)\)$")
         match = pattern.match(r.text)
         json_arr = json.loads(match.group(1))["s"]
         result_arr = []

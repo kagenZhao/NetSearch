@@ -19,7 +19,8 @@ class DouBanSearch(BaseSearch):
         return result_arr
 
     def run(self):
-        r = requests.get(self.reqeust_url)
+        headers = {'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36'}
+        r = requests.get(self.reqeust_url, headers=headers)
         result_arr = []
         for item in r.json():
             item_type = item["type"]

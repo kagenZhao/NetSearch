@@ -17,7 +17,8 @@ class CocoapodsSearch(BaseSearch):
             name = item["name"]
             version = item["version"]
             summary = item["summary"]
-            homepage = item["homepage"]
+            if 'homepage' in item:
+                homepage = item["homepage"]
             args = Args(homepage, "pod '%s', '~>%s'" % (name, version))
             result_arr.append(Item("%s(%s)" % (name, version),
                                    args.open_url,
